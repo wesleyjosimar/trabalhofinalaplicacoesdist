@@ -1,0 +1,70 @@
+# Docker Compose para Coolify
+# Este arquivo é otimizado para deploy no Coolify
+# Use este arquivo se o Coolify suportar Docker Compose
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: cbf-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-cbf_db}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - cbf-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    container_name: cbf-backend
+    environment:
+      DB_HOST: ${DB_HOST:-postgres}
+      DB_PORT: ${DB_PORT:-5432}
+      DB_USER: ${DB_USER:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME:-cbf_db}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-24h}
+      PORT: ${PORT:-3001}
+      NODE_ENV: production
+      FRONTEND_URL: ${FRONTEND_URL}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - cbf-network
+    expose:
+      - "3001"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+      args:
+        VITE_API_URL: ${VITE_API_URL}
+    container_name: cbf-frontend
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - cbf-network
+    expose:
+      - "80"
+
+networks:
+  cbf-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+

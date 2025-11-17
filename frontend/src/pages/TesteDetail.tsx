@@ -7,6 +7,8 @@ import './TesteDetail.css';
 const TesteDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [showAmostraModal, setShowAmostraModal] = useState(false);
+  const [showCustodiaModal, setShowCustodiaModal] = useState(false);
+  const [amostraIdCustodia, setAmostraIdCustodia] = useState<string | null>(null);
   const [tipoAmostra, setTipoAmostra] = useState<'A' | 'B'>('A');
 
   const queryClient = useQueryClient();
@@ -32,6 +34,12 @@ const TesteDetail: React.FC = () => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['teste', id] });
     },
+  });
+
+  const { data: cadeiaCustodia, isLoading: isLoadingCustodia } = useQuery({
+    queryKey: ['cadeia-custodia', amostraIdCustodia],
+    queryFn: () => antidopingService.getCadeiaCustodia(amostraIdCustodia!),
+    enabled: !!amostraIdCustodia && showCustodiaModal,
   });
 
   const handleStatusChange = (amostraId: string, newStatus: string) => {
@@ -113,8 +121,8 @@ const TesteDetail: React.FC = () => {
                         {amostra.resultado && (
                           <button
                             onClick={() => {
-                              // TODO: Implementar visualização de cadeia de custódia
-                              alert('Cadeia de custódia');
+                              setAmostraIdCustodia(amostra.id);
+                              setShowCustodiaModal(true);
                             }}
                             className="btn-link"
                           >
@@ -184,6 +192,124 @@ const TesteDetail: React.FC = () => {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {showCustodiaModal && (
+        <div className="modal-overlay" onClick={() => {
+          setShowCustodiaModal(false);
+          setAmostraIdCustodia(null);
+        }}>
+          <div className="modal-content custodia-modal" onClick={(e) => e.stopPropagation()}>
+            <h2>Cadeia de Custódia</h2>
+            {isLoadingCustodia ? (
+              <div>Carregando...</div>
+            ) : cadeiaCustodia ? (
+              <div className="custodia-content">
+                <div className="custodia-section">
+                  <h3>Informações da Amostra</h3>
+                  <div className="detail-grid">
+                    <div className="detail-item">
+                      <label>Código</label>
+                      <p>{cadeiaCustodia.amostra.codigo}</p>
+                    </div>
+                    <div className="detail-item">
+                      <label>Tipo</label>
+                      <p>Amostra {cadeiaCustodia.amostra.tipo}</p>
+                    </div>
+                    <div className="detail-item">
+                      <label>Status</label>
+                      <p>{cadeiaCustodia.amostra.status}</p>
+                    </div>
+                    <div className="detail-item">
+                      <label>Data de Criação</label>
+                      <p>{new Date(cadeiaCustodia.amostra.createdAt).toLocaleString('pt-BR')}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="custodia-section">
+                  <h3>Informações do Teste</h3>
+                  <div className="detail-grid">
+                    <div className="detail-item">
+                      <label>Atleta</label>
+                      <p>{cadeiaCustodia.teste.atleta.nome}</p>
+                    </div>
+                    <div className="detail-item">
+                      <label>Documento</label>
+                      <p>{cadeiaCustodia.teste.atleta.documento}</p>
+                    </div>
+                    <div className="detail-item">
+                      <label>Data de Coleta</label>
+                      <p>{new Date(cadeiaCustodia.teste.dataColeta).toLocaleString('pt-BR')}</p>
+                    </div>
+                    <div className="detail-item">
+                      <label>Local de Coleta</label>
+                      <p>{cadeiaCustodia.teste.localColeta}</p>
+                    </div>
+                    <div className="detail-item">
+                      <label>Coletor</label>
+                      <p>{cadeiaCustodia.teste.coletor}</p>
+                    </div>
+                  </div>
+                </div>
+
+                {cadeiaCustodia.resultado && (
+                  <div className="custodia-section">
+                    <h3>Resultado da Análise</h3>
+                    <div className="detail-grid">
+                      <div className="detail-item">
+                        <label>Resultado</label>
+                        <p className={`resultado-${cadeiaCustodia.resultado.resultado.toLowerCase()}`}>
+                          {cadeiaCustodia.resultado.resultado}
+                        </p>
+                      </div>
+                      <div className="detail-item">
+                        <label>Laboratório</label>
+                        <p>{cadeiaCustodia.resultado.laboratorio.nome} ({cadeiaCustodia.resultado.laboratorio.codigo})</p>
+                      </div>
+                      <div className="detail-item">
+                        <label>Data de Análise</label>
+                        <p>{new Date(cadeiaCustodia.resultado.dataAnalise).toLocaleString('pt-BR')}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {cadeiaCustodia.eventos && cadeiaCustodia.eventos.length > 0 && (
+                  <div className="custodia-section">
+                    <h3>Histórico de Eventos</h3>
+                    <div className="eventos-timeline">
+                      {cadeiaCustodia.eventos.map((evento, index) => (
+                        <div key={index} className="evento-item">
+                          <div className="evento-header">
+                            <span className="evento-tipo">{evento.tipo}</span>
+                            <span className="evento-data">
+                              {new Date(evento.data).toLocaleString('pt-BR')}
+                            </span>
+                          </div>
+                          <div className="evento-usuario">Usuário: {evento.usuario}</div>
+                          {evento.observacoes && (
+                            <div className="evento-observacoes">{evento.observacoes}</div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <div>Erro ao carregar cadeia de custódia</div>
+            )}
+            <div className="modal-actions">
+              <button type="button" onClick={() => {
+                setShowCustodiaModal(false);
+                setAmostraIdCustodia(null);
+              }}>
+                Fechar
+              </button>
+            </div>
           </div>
         </div>
       )}

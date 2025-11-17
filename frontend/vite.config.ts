@@ -13,7 +13,11 @@ export default defineConfig({
     },
     proxy: {
       '/api': {
-        target: 'http://backend:3001',
+        // Em desenvolvimento local, usar localhost
+        // Em Docker, usar o nome do serviço 'backend'
+        // A variável VITE_API_URL pode ser definida no .env
+        // Se não estiver definida, usa localhost por padrão
+        target: 'http://localhost:3001',
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api/, ''),

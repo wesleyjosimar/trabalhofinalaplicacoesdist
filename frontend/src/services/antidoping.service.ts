@@ -70,6 +70,43 @@ export interface CreateResultadoDto {
   concentracao?: string;
 }
 
+export interface CadeiaCustodia {
+  amostra: {
+    id: string;
+    codigo: string;
+    tipo: 'A' | 'B';
+    status: string;
+    createdAt: string;
+  };
+  teste: {
+    id: string;
+    dataColeta: string;
+    localColeta: string;
+    coletor: string;
+    atleta: {
+      id: string;
+      nome: string;
+      documento: string;
+    };
+  };
+  resultado?: {
+    id: string;
+    resultado: 'NEGATIVO' | 'POSITIVO' | 'INCONCLUSIVO';
+    dataAnalise: string;
+    laboratorio: {
+      id: string;
+      nome: string;
+      codigo: string;
+    };
+  };
+  eventos: Array<{
+    tipo: string;
+    usuario: string;
+    data: string;
+    observacoes?: string;
+  }>;
+}
+
 export interface ListTestesParams {
   page?: number;
   limit?: number;
@@ -113,8 +150,8 @@ export const antidopingService = {
     return response.data;
   },
 
-  async getCadeiaCustodia(amostraId: string) {
-    const response = await api.get(`/antidoping/amostras/${amostraId}/custodia`);
+  async getCadeiaCustodia(amostraId: string): Promise<CadeiaCustodia> {
+    const response = await api.get<CadeiaCustodia>(`/antidoping/amostras/${amostraId}/custodia`);
     return response.data;
   },
 

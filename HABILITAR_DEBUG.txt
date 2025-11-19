@@ -1,0 +1,56 @@
+================================================================================
+  COMO HABILITAR DEBUG NO SERVIDOR
+================================================================================
+
+OPÇÃO 1: EDITAR O .env NO SERVIDOR
+================================================================================
+
+1. Acesse o File Manager do CWP
+2. Abra o arquivo .env na raiz do public_html
+3. Altere estas linhas:
+
+   APP_ENV=local
+   APP_DEBUG=true
+
+4. Salve o arquivo
+
+================================================================================
+
+OPÇÃO 2: VIA TERMINAL SSH
+================================================================================
+
+cd /home/usuario/public_html
+nano .env
+
+Altere:
+APP_ENV=local
+APP_DEBUG=true
+
+Salve: Ctrl+X, Y, Enter
+
+================================================================================
+
+APÓS HABILITAR DEBUG:
+================================================================================
+
+1. Acesse: https://teste.amorexpress.com.br/teste_erro.php
+   - Vai mostrar informações detalhadas do ambiente
+
+2. Acesse: https://teste.amorexpress.com.br
+   - Agora vai mostrar o erro completo em vez de erro 500
+
+3. Verifique os logs:
+   tail -f storage/logs/laravel.log
+
+================================================================================
+
+IMPORTANTE:
+================================================================================
+
+⚠️ NUNCA deixe APP_DEBUG=true em produção!
+⚠️ Após resolver o problema, volte para:
+   APP_ENV=production
+   APP_DEBUG=false
+
+================================================================================
+

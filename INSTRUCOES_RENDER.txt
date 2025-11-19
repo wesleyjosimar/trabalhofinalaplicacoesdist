@@ -1,0 +1,81 @@
+================================================================================
+  DEPLOY NO RENDER - PASSO A PASSO
+================================================================================
+
+1. CRIAR CONTA NO RENDER
+   - Acesse: https://render.com
+   - Faça login com GitHub/GitLab
+
+2. CONECTAR REPOSITÓRIO
+   - Conecte seu repositório Git ao Render
+   - Ou faça push deste projeto para um repositório
+
+3. CRIAR BANCO DE DADOS
+   - No dashboard do Render, clique em "New +"
+   - Escolha "PostgreSQL" (ou MySQL se disponível)
+   - Nome: cbf-antidoping-db
+   - Plano: Free
+   - Anote as credenciais (host, database, user, password)
+
+4. CRIAR WEB SERVICE
+   - No dashboard, clique em "New +"
+   - Escolha "Web Service"
+   - Conecte ao seu repositório
+   - Configurações:
+     * Name: cbf-antidoping
+     * Runtime: PHP
+     * Build Command: composer install --no-dev --optimize-autoloader && php artisan config:cache && php artisan route:cache && php artisan view:cache
+     * Start Command: php -S 0.0.0.0:$PORT -t public
+     * Health Check Path: /up
+
+5. CONFIGURAR VARIÁVEIS DE AMBIENTE
+   No painel do Web Service, vá em "Environment" e adicione:
+
+   APP_NAME=CBF_Antidoping
+   APP_ENV=production
+   APP_DEBUG=false
+   APP_KEY=base64:GERAR_AQUI (veja abaixo)
+   APP_URL=https://seu-app.onrender.com
+   
+   DB_CONNECTION=pgsql (ou mysql)
+   DB_HOST=seu-host-do-banco
+   DB_PORT=5432 (ou 3306 para MySQL)
+   DB_DATABASE=nome-do-banco
+   DB_USERNAME=usuario-do-banco
+   DB_PASSWORD=senha-do-banco
+   
+   SESSION_DRIVER=database
+   LOG_CHANNEL=stderr
+
+6. GERAR APP_KEY
+   No terminal local (se tiver PHP) ou no Shell do Render:
+   php artisan key:generate --show
+   
+   Copie a chave gerada e cole em APP_KEY no Render
+
+7. EXECUTAR MIGRATIONS
+   No Shell do Render (ou adicione ao build command):
+   php artisan migrate --force
+   php artisan db:seed --force
+
+8. DEPLOY
+   - Clique em "Manual Deploy" ou faça push no Git
+   - Aguarde o build completar
+   - Acesse sua URL: https://seu-app.onrender.com
+
+================================================================================
+  LOGIN PADRÃO
+================================================================================
+Email: admin@cbf.com.br
+Senha: admin123
+
+================================================================================
+  DICAS
+================================================================================
+- O Render oferece plano free com algumas limitações
+- Após 15min de inatividade, o app "dorme" (free tier)
+- Primeira requisição após dormir pode demorar ~30s
+- Para produção, considere upgrade para plano pago
+
+================================================================================
+

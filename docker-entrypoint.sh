@@ -19,7 +19,11 @@ fi
 # Executar migrations (se necessário)
 if [ "$RUN_MIGRATIONS" != "false" ]; then
     echo "Executando migrations..."
-    php artisan migrate --force || echo "ERRO: Falha ao executar migrations"
+    php artisan migrate --force 2>&1 || {
+        echo "ERRO: Falha ao executar migrations"
+        echo "Verificando se tabelas já existem..."
+        php artisan migrate:status 2>&1 || true
+    }
 fi
 
 # Executar seed (apenas na primeira vez, se necessário)

@@ -26,8 +26,13 @@ WORKDIR /var/www
 # Copiar arquivos
 COPY . /var/www
 
-# Instalar dependências
-RUN composer install --no-dev --optimize-autoloader --no-interaction
+# Criar .env temporário para o build
+RUN touch /var/www/.env && \
+    echo "APP_KEY=" > /var/www/.env
+
+# Instalar dependências (sem scripts que precisam do artisan)
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-scripts && \
+    composer dump-autoload --optimize --no-scripts
 
 # Configurar permissões
 RUN chown -R www-data:www-data /var/www \

@@ -10,12 +10,11 @@
    - Conecte seu repositório Git ao Render
    - Ou faça push deste projeto para um repositório
 
-3. CRIAR BANCO DE DADOS
-   - No dashboard do Render, clique em "New +"
-   - Escolha "PostgreSQL" (ou MySQL se disponível)
-   - Nome: cbf-antidoping-db
-   - Plano: Free
+3. USAR SEU BANCO POSTGRESQL EXISTENTE
+   - Você já tem um banco PostgreSQL no Render
+   - Vá em Dashboard > Seu Banco PostgreSQL > Connection Info
    - Anote as credenciais (host, database, user, password)
+   - OU use as credenciais que você já tem
 
 4. CRIAR WEB SERVICE
    - No dashboard, clique em "New +"
@@ -30,22 +29,14 @@
 
 5. CONFIGURAR VARIÁVEIS DE AMBIENTE
    No painel do Web Service, vá em "Environment" e adicione:
-
-   APP_NAME=CBF_Antidoping
-   APP_ENV=production
-   APP_DEBUG=false
-   APP_KEY=base64:GERAR_AQUI (veja abaixo)
-   APP_URL=https://seu-app.onrender.com
    
-   DB_CONNECTION=pgsql (ou mysql)
-   DB_HOST=seu-host-do-banco
-   DB_PORT=5432 (ou 3306 para MySQL)
-   DB_DATABASE=nome-do-banco
-   DB_USERNAME=usuario-do-banco
-   DB_PASSWORD=senha-do-banco
+   Veja o arquivo VARIAVEIS_RENDER.txt para a lista completa!
    
-   SESSION_DRIVER=database
-   LOG_CHANNEL=stderr
+   IMPORTANTE: Configure com as credenciais do SEU banco PostgreSQL:
+   - DB_HOST=seu-host-postgresql
+   - DB_DATABASE=nome-do-seu-banco
+   - DB_USERNAME=seu-usuario
+   - DB_PASSWORD=sua-senha
 
 6. GERAR APP_KEY
    No terminal local (se tiver PHP) ou no Shell do Render:

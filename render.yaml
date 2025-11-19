@@ -13,11 +13,7 @@ services:
         value: stderr
       - key: SESSION_DRIVER
         value: database
+      - key: DB_CONNECTION
+        value: pgsql
     healthCheckPath: /up
-
-databases:
-  - name: cbf-antidoping-db
-    databaseName: cbf_antidoping
-    user: cbf_user
-    plan: free
 

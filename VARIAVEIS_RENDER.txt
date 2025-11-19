@@ -1,0 +1,63 @@
+================================================================================
+  VARIÁVEIS DE AMBIENTE PARA CONFIGURAR NO RENDER
+================================================================================
+
+No painel do Render, vá em "Environment" e adicione estas variáveis:
+
+================================================================================
+  OBRIGATÓRIAS
+================================================================================
+
+APP_NAME=CBF_Antidoping
+APP_ENV=production
+APP_DEBUG=false
+APP_KEY=base64:GERAR_AQUI (veja abaixo como gerar)
+APP_URL=https://seu-app.onrender.com
+
+DB_CONNECTION=pgsql
+DB_HOST=seu-host-postgresql
+DB_PORT=5432
+DB_DATABASE=nome-do-banco
+DB_USERNAME=usuario-do-banco
+DB_PASSWORD=senha-do-banco
+
+SESSION_DRIVER=database
+LOG_CHANNEL=stderr
+
+================================================================================
+  COMO GERAR APP_KEY
+================================================================================
+
+Opção 1: No Shell do Render (após primeiro deploy)
+  php artisan key:generate --show
+
+Opção 2: Localmente (se tiver PHP)
+  php artisan key:generate --show
+
+Copie a chave gerada (começa com base64:) e cole em APP_KEY
+
+================================================================================
+  EXEMPLO COM SEU BANCO POSTGRESQL
+================================================================================
+
+Se seu banco está no Render, as credenciais estão em:
+  Dashboard > Seu Banco PostgreSQL > Connection Info
+
+Exemplo:
+  DB_HOST=dpg-xxxxx-a.oregon-postgres.render.com
+  DB_PORT=5432
+  DB_DATABASE=cbf_postgres
+  DB_USERNAME=cbf_postgres_user
+  DB_PASSWORD=sua_senha_aqui
+
+================================================================================
+  IMPORTANTE
+================================================================================
+
+- Não commite o arquivo .env no Git!
+- Configure todas as variáveis no painel do Render
+- Após configurar, faça um novo deploy
+- O primeiro deploy vai executar as migrations automaticamente
+
+================================================================================
+

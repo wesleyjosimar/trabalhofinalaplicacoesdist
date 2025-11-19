@@ -56,11 +56,11 @@ php artisan key:generate
 3. **Configure o banco de dados no arquivo `.env`**
 ```env
 DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
+DB_HOST=localhost
 DB_PORT=3306
 DB_DATABASE=cbf_antidoping
-DB_USERNAME=seu_usuario
-DB_PASSWORD=sua_senha
+DB_USERNAME=seu_usuario_mysql
+DB_PASSWORD=sua_senha_mysql
 ```
 
 4. **Execute as migrations**

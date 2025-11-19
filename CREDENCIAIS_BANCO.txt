@@ -1,13 +1,24 @@
 ================================================================================
-  VARIÁVEIS DE AMBIENTE - EXEMPLO COM VALORES ALEATÓRIOS
+  CREDENCIAIS DO BANCO POSTGRESQL - RENDER
 ================================================================================
-Copie e cole estas variáveis no Render, substituindo pelos seus valores reais:
+
+USE ESTAS CREDENCIAIS NO RENDER (Environment Variables):
+
+Hostname: dpg-d4ev74u3jp1c738ov1v0-a.oregon-postgres.render.com
+Port: 5432
+Database: cbf_antidoping
+Username: cbf_user
+Password: Jwa4jbjLLmIfpkCNf34NfU3PXVpdfgxe
+
+================================================================================
+  VARIÁVEIS PARA COLAR NO RENDER
+================================================================================
 
 APP_NAME=CBF_Antidoping
 APP_ENV=production
 APP_DEBUG=false
 APP_KEY=base64:GERAR_DEPOIS
-APP_URL=https://cbf-antidoping-xyz9.onrender.com
+APP_URL=https://seu-app.onrender.com
 
 DB_CONNECTION=pgsql
 DB_HOST=dpg-d4ev74u3jp1c738ov1v0-a.oregon-postgres.render.com
@@ -23,11 +34,9 @@ RUN_MIGRATIONS=true
 ================================================================================
   IMPORTANTE
 ================================================================================
-- Substitua DB_HOST, DB_DATABASE, DB_USERNAME e DB_PASSWORD pelos valores
-  reais do seu banco PostgreSQL no Render
-- Gere o APP_KEY após o primeiro deploy usando:
-  php artisan key:generate --show
-- Ajuste o APP_URL para a URL real do seu app no Render
+- Substitua APP_URL pela URL real do seu Web Service no Render
+- Gere APP_KEY após o primeiro deploy: php artisan key:generate --show
+- Estas são as credenciais REAIS do seu banco!
 
 ================================================================================
 

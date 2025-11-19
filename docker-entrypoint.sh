@@ -11,7 +11,9 @@ php artisan cache:clear || true
 # Verificar se APP_KEY está configurado
 if [ -z "$APP_KEY" ] || [ "$APP_KEY" = "base64:GERAR_DEPOIS" ] || [ "$APP_KEY" = "base64:GERAR_AQUI" ]; then
     echo "AVISO: APP_KEY não configurado. Gerando..."
-    php artisan key:generate --force || true
+    php artisan key:generate --force 2>&1 || echo "ERRO ao gerar APP_KEY"
+    # Atualizar APP_KEY na variável de ambiente se gerado
+    export APP_KEY=$(php artisan key:generate --show 2>/dev/null || echo "")
 fi
 
 # Executar migrations (se necessário)

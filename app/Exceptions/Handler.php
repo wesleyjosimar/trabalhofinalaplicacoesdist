@@ -20,16 +20,5 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $e)
-    {
-        // Em produção, mostrar erro genérico se APP_DEBUG=false
-        if (config('app.debug') === false) {
-            if ($e instanceof \Illuminate\Database\QueryException) {
-                return response()->view('errors.500', ['message' => 'Erro de conexão com o banco de dados'], 500);
-            }
-        }
-        
-        return parent::render($request, $e);
-    }
 }
 

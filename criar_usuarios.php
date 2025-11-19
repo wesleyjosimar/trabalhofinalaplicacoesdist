@@ -12,8 +12,19 @@ $usuarioModel = new Usuario();
 // Verificar se já existem usuários
 $usuarios = $usuarioModel->listar();
 if (!empty($usuarios)) {
-    echo "Usuários já existem no banco.\n";
-    exit;
+    echo "⚠️ Usuários já existem no banco.\n";
+    echo "Deseja continuar mesmo assim? (s/n): ";
+    $resposta = trim(fgets(STDIN));
+    if (strtolower($resposta) !== 's') {
+        exit;
+    }
+    // Deletar usuários existentes
+    foreach ($usuarios as $usuario) {
+        if (in_array($usuario['email'], ['admin@cbf.com.br', 'operador@cbf.com.br'])) {
+            $usuarioModel->excluir($usuario['id']);
+            echo "Usuário {$usuario['email']} removido.\n";
+        }
+    }
 }
 
 // Criar usuários padrão

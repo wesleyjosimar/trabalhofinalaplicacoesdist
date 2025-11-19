@@ -75,18 +75,10 @@ CREATE TABLE IF NOT EXISTS `testes` (
 -- ============================================================================
 -- INSERIR USUÁRIOS PADRÃO (OPCIONAL)
 -- ============================================================================
--- Para criar os usuários, execute o arquivo criar_usuarios.sql
+-- Para criar os usuários, execute o arquivo inserir_usuarios.sql
 -- OU execute o script PHP: php criar_usuarios.php
 --
 -- Credenciais padrão:
 --   Admin: admin@cbf.com.br / admin123
 --   Operador: operador@cbf.com.br / operador123
-
 -- ============================================================================
--- FIM DO SCRIPT
--- ============================================================================
--- Após executar, você pode testar o login:
--- Email: admin@cbf.com.br
--- Senha: admin123
--- ============================================================================
-

@@ -52,7 +52,7 @@ class AuthController {
     public static function verificarAdmin() {
         self::verificarAutenticacao();
         if ($_SESSION['usuario_perfil'] !== 'admin') {
-            header('Location: /');
+            header('Location: index.php');
             exit;
         }
     }

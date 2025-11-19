@@ -2,7 +2,7 @@
 -- INSERIR USUÁRIOS - EXECUTE NO phpMyAdmin
 -- ============================================================================
 
-USE amorexpr_teste;
+USE cbf_antidoping;
 
 -- Limpar usuários existentes (opcional - descomente se quiser)
 -- DELETE FROM usuarios WHERE email IN ('admin@cbf.com.br', 'operador@cbf.com.br');

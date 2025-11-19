@@ -4,8 +4,8 @@
 -- Execute este script no seu banco MySQL para criar todas as tabelas
 -- ============================================================================
 
--- Selecionar o banco (ajuste o nome se necessário)
-USE amorexpr_teste;
+-- Selecionar o banco
+USE cbf_antidoping;
 
 -- ============================================================================
 -- TABELA: usuarios

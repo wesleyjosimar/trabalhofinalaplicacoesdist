@@ -4,7 +4,7 @@
 -- Execute este script no phpMyAdmin para criar os usuários
 -- ============================================================================
 
-USE amorexpr_teste;
+USE cbf_antidoping;
 
 -- Inserir usuário Administrador
 -- Email: admin@cbf.com.br

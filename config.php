@@ -3,17 +3,17 @@
  * Configuração da Aplicação - PHP Puro
  */
 
-// Configurações do banco de dados
+// Configurações do banco de dados - XAMPP LOCAL
 define('DB_HOST', 'localhost');
 define('DB_PORT', '3306');
-define('DB_NAME', 'amorexpr_teste');
-define('DB_USER', 'amorexpr_admin');
-define('DB_PASS', 'Testando@09');
+define('DB_NAME', 'cbf_antidoping');
+define('DB_USER', 'root');
+define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
 
 // Configurações da aplicação
 define('APP_NAME', 'CBF Antidoping');
-define('APP_URL', 'https://teste.amorexpress.com.br');
+define('APP_URL', 'http://localhost/cbf');
 define('APP_DEBUG', true);
 
 // Caminhos - ajustados para funcionar diretamente no subdomínio

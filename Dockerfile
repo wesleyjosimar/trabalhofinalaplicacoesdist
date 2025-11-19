@@ -34,8 +34,8 @@ RUN chown -R www-data:www-data /var/www \
     && chmod -R 755 /var/www/storage \
     && chmod -R 755 /var/www/bootstrap/cache
 
-# Expor porta (Render usa variável $PORT)
-EXPOSE $PORT
+# Expor porta (Render injeta $PORT dinamicamente)
+EXPOSE 8000
 
 # Script de inicialização
 COPY docker-entrypoint.sh /usr/local/bin/

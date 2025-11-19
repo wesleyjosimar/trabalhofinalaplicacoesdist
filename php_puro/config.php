@@ -17,10 +17,10 @@ define('APP_URL', 'https://teste.amorexpress.com.br');
 define('APP_DEBUG', true);
 
 // Caminhos
-define('BASE_PATH', dirname(__DIR__));
-define('VIEWS_PATH', BASE_PATH . '/php_puro/views');
-define('MODELS_PATH', BASE_PATH . '/php_puro/models');
-define('CONTROLLERS_PATH', BASE_PATH . '/php_puro/controllers');
+define('BASE_PATH', __DIR__);
+define('VIEWS_PATH', BASE_PATH . '/views');
+define('MODELS_PATH', BASE_PATH . '/models');
+define('CONTROLLERS_PATH', BASE_PATH . '/controllers');
 
 // Iniciar sessão
 if (session_status() === PHP_SESSION_NONE) {

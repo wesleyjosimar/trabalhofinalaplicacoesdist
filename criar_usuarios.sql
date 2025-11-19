@@ -13,7 +13,7 @@ INSERT INTO `usuarios` (`nome`, `email`, `senha`, `perfil`, `created_at`, `updat
 VALUES (
     'Administrador', 
     'admin@cbf.com.br', 
-    '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 
+    '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 
     'admin', 
     NOW(), 
     NOW()
@@ -29,7 +29,7 @@ INSERT INTO `usuarios` (`nome`, `email`, `senha`, `perfil`, `created_at`, `updat
 VALUES (
     'Operador', 
     'operador@cbf.com.br', 
-    '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 
+    '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 
     'operacional', 
     NOW(), 
     NOW()

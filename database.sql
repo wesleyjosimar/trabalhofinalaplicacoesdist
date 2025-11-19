@@ -75,19 +75,12 @@ CREATE TABLE IF NOT EXISTS `testes` (
 -- ============================================================================
 -- INSERIR USUÁRIOS PADRÃO (OPCIONAL)
 -- ============================================================================
--- NOTA: É melhor criar os usuários via Laravel (php artisan db:seed)
--- para garantir que as senhas sejam hasheadas corretamente.
--- 
--- Se quiser inserir manualmente, execute o seeder do Laravel:
--- php artisan db:seed
+-- Para criar os usuários, execute o arquivo criar_usuarios.sql
+-- OU execute o script PHP: php criar_usuarios.php
 --
--- OU use estes hashes (senha: admin123 e operador123):
--- Hash para admin123: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
--- Hash para operador123: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
---
--- INSERT INTO `usuarios` (`nome`, `email`, `senha`, `perfil`, `created_at`, `updated_at`) VALUES
--- ('Administrador', 'admin@cbf.com.br', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', NOW(), NOW()),
--- ('Operador', 'operador@cbf.com.br', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'operacional', NOW(), NOW());
+-- Credenciais padrão:
+--   Admin: admin@cbf.com.br / admin123
+--   Operador: operador@cbf.com.br / operador123
 
 -- ============================================================================
 -- FIM DO SCRIPT

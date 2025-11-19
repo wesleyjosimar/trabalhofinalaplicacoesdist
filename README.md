@@ -33,10 +33,10 @@ Sistema web simples desenvolvido em **PHP puro** (sem frameworks) para gerenciam
 ## 🚀 Instalação no CWP (CentOS Web Panel)
 
 ### 1. Copiar arquivos
-Copie toda a pasta `php_puro/` para `public_html/` no servidor.
+Copie todos os arquivos da raiz do projeto para `public_html/teste.amorexpress.com.br/` no servidor.
 
 ### 2. Configurar banco de dados
-Edite `php_puro/config.php` e ajuste as credenciais:
+Edite `config.php` e ajuste as credenciais:
 ```php
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'amorexpr_teste');

@@ -1,0 +1,54 @@
+================================================================================
+  INSTALAÇÃO NO XAMPP - TESTE LOCAL
+================================================================================
+
+1. INSTALAR XAMPP
+   - Baixe: https://www.apachefriends.org/
+   - Instale em C:\xampp (ou outro local)
+   - Inicie o XAMPP Control Panel
+   - Inicie Apache e MySQL
+
+2. CRIAR BANCO DE DADOS
+   - Acesse: http://localhost/phpmyadmin
+   - Clique em "Novo" para criar banco
+   - Nome: cbf_antidoping
+   - Collation: utf8mb4_unicode_ci
+   - Clique em "Criar"
+
+3. CRIAR TABELAS
+   - No phpMyAdmin, selecione o banco cbf_antidoping
+   - Vá na aba "SQL"
+   - Abra o arquivo database.sql
+   - Copie TODO o conteúdo
+   - Cole no SQL do phpMyAdmin
+   - Execute
+
+4. CONFIGURAR PROJETO
+   - Copie TODOS os arquivos do projeto para: C:\xampp\htdocs\cbf\
+   - Renomeie config.local.php para config.php
+   - (Ou edite config.php e ajuste as credenciais do banco)
+
+5. CRIAR USUÁRIOS
+   - Abra o Terminal/Prompt de Comando
+   - cd C:\xampp\htdocs\cbf
+   - php criar_usuarios.php
+
+6. ACESSAR
+   - Abra o navegador
+   - Acesse: http://localhost/cbf/login.php
+   - Login: admin@cbf.com.br / admin123
+
+================================================================================
+
+CONFIGURAÇÃO DO BANCO NO config.php:
+================================================================================
+
+Se não renomear config.local.php, edite config.php:
+
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'cbf_antidoping');
+define('DB_USER', 'root');
+define('DB_PASS', '');  // XAMPP geralmente não tem senha
+
+================================================================================
+

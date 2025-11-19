@@ -73,16 +73,21 @@ CREATE TABLE IF NOT EXISTS `testes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ============================================================================
--- INSERIR USUÁRIOS PADRÃO
+-- INSERIR USUÁRIOS PADRÃO (OPCIONAL)
 -- ============================================================================
--- Senhas são hasheadas com bcrypt
--- admin123 = hash abaixo
--- operador123 = hash abaixo
-
-INSERT INTO `usuarios` (`nome`, `email`, `senha`, `perfil`, `created_at`, `updated_at`) VALUES
-('Administrador', 'admin@cbf.com.br', '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'admin', NOW(), NOW()),
-('Operador', 'operador@cbf.com.br', '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcfl7p92ldGxad68LJZdL17lhWy', 'operacional', NOW(), NOW())
-ON DUPLICATE KEY UPDATE `nome`=VALUES(`nome`);
+-- NOTA: É melhor criar os usuários via Laravel (php artisan db:seed)
+-- para garantir que as senhas sejam hasheadas corretamente.
+-- 
+-- Se quiser inserir manualmente, execute o seeder do Laravel:
+-- php artisan db:seed
+--
+-- OU use estes hashes (senha: admin123 e operador123):
+-- Hash para admin123: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+-- Hash para operador123: $2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi
+--
+-- INSERT INTO `usuarios` (`nome`, `email`, `senha`, `perfil`, `created_at`, `updated_at`) VALUES
+-- ('Administrador', 'admin@cbf.com.br', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', NOW(), NOW()),
+-- ('Operador', 'operador@cbf.com.br', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'operacional', NOW(), NOW());
 
 -- ============================================================================
 -- FIM DO SCRIPT

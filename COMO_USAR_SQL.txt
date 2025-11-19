@@ -1,0 +1,46 @@
+================================================================================
+  COMO USAR O ARQUIVO database.sql
+================================================================================
+
+1. ACESSE SEU BANCO MYSQL
+   - Via phpMyAdmin, MySQL Workbench, ou linha de comando
+   - Conecte no banco: amorexpr_teste
+
+2. EXECUTE O ARQUIVO SQL
+   - Abra o arquivo database.sql
+   - Copie todo o conteúdo
+   - Cole no SQL do seu banco e execute
+
+3. VERIFICAR SE AS TABELAS FORAM CRIADAS
+   Execute:
+   SHOW TABLES;
+   
+   Deve mostrar:
+   - usuarios
+   - sessions
+   - atletas
+   - testes
+
+4. CRIAR USUÁRIOS PADRÃO
+   Após criar as tabelas, execute via Laravel:
+   php artisan db:seed
+   
+   Isso criará os usuários:
+   - admin@cbf.com.br / admin123
+   - operador@cbf.com.br / operador123
+
+================================================================================
+  ALTERNATIVA: USAR MIGRATIONS DO LARAVEL
+================================================================================
+
+Se preferir, pode usar as migrations do Laravel diretamente:
+
+1. Configure o .env com as credenciais do banco
+2. Execute:
+   php artisan migrate
+   php artisan db:seed
+
+Isso criará todas as tabelas e usuários automaticamente.
+
+================================================================================
+

@@ -22,11 +22,22 @@ echo "APP_KEY: " . (getenv('APP_KEY') ? 'DEFINIDO' : 'NÃO DEFINIDO') . "<br>";
 
 echo "<h2>4. Teste de Conexão com Banco</h2>";
 try {
-    $host = getenv('DB_HOST') ?: 'dpg-d4ev74u3jp1c738ov1v0-a.oregon-postgres.render.com';
+    // Usar valores das variáveis de ambiente (não fallback hardcoded)
+    $host = getenv('DB_HOST');
     $port = getenv('DB_PORT') ?: '5432';
-    $db = getenv('DB_DATABASE') ?: 'cbf_antidoping';
-    $user = getenv('DB_USERNAME') ?: 'cbf_user';
-    $pass = getenv('DB_PASSWORD') ?: 'Jwa4jbjLLmIfpkCNf34NfU3PXVpdfgxe';
+    $db = getenv('DB_DATABASE');
+    $user = getenv('DB_USERNAME');
+    $pass = getenv('DB_PASSWORD');
+    
+    if (!$host || !$db || !$user || !$pass) {
+        echo "❌ Variáveis de ambiente não configuradas corretamente!<br>";
+        echo "DB_HOST: " . ($host ?: 'NÃO DEFINIDO') . "<br>";
+        echo "DB_DATABASE: " . ($db ?: 'NÃO DEFINIDO') . "<br>";
+        echo "DB_USERNAME: " . ($user ?: 'NÃO DEFINIDO') . "<br>";
+        echo "DB_PASSWORD: " . ($pass ? 'DEFINIDO' : 'NÃO DEFINIDO') . "<br>";
+        echo "<br><strong>Configure as variáveis no Render: Environment → Edite cada variável</strong><br>";
+        return;
+    }
     
     $dsn = "pgsql:host=$host;port=$port;dbname=$db";
     $pdo = new PDO($dsn, $user, $pass);

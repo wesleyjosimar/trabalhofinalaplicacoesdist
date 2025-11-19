@@ -1,0 +1,100 @@
+================================================================================
+  ⚠️ ERRO: Variáveis de Ambiente Não Configuradas Corretamente
+================================================================================
+
+O erro mostra que as variáveis ainda estão com valores placeholder.
+Você precisa configurar os valores REAIS no Render.
+
+================================================================================
+  PASSO A PASSO PARA CONFIGURAR NO RENDER
+================================================================================
+
+1. Acesse: https://dashboard.render.com
+
+2. Clique no seu Web Service: "cbf-antidoping"
+
+3. No menu lateral, clique em "Environment"
+
+4. Você verá uma lista de variáveis. Procure por:
+   - DB_HOST
+   - DB_DATABASE
+   - DB_USERNAME
+   - DB_PASSWORD
+
+5. Para CADA uma dessas variáveis:
+   - Clique no lápis (editar) ao lado
+   - SUBSTITUA o valor placeholder pelo valor REAL abaixo
+   - Clique em "Save"
+
+================================================================================
+  VALORES REAIS PARA CONFIGURAR
+================================================================================
+
+DB_HOST
+VALOR ATUAL (ERRADO): seu-host-postgresql
+VALOR CORRETO: dpg-d4ev74u3jp1c738ov1v0-a.oregon-postgres.render.com
+
+DB_DATABASE
+VALOR ATUAL (ERRADO): nome-do-seu-banco
+VALOR CORRETO: cbf_antidoping
+
+DB_USERNAME
+VALOR ATUAL (ERRADO): seu-usuario
+VALOR CORRETO: cbf_user
+
+DB_PASSWORD
+VALOR ATUAL (ERRADO): sua-senha
+VALOR CORRETO: Jwa4jbjLLmIfpkCNf34NfU3PXVpdfgxe
+
+DB_CONNECTION
+VALOR: pgsql
+
+DB_PORT
+VALOR: 5432
+
+================================================================================
+  TODAS AS VARIÁVEIS COMPLETAS
+================================================================================
+
+Copie e cole estas variáveis no Render (Environment):
+
+APP_NAME=CBF_Antidoping
+APP_ENV=production
+APP_DEBUG=false
+APP_KEY=base64:GERAR_DEPOIS
+APP_URL=https://cbf-antidoping.onrender.com
+
+DB_CONNECTION=pgsql
+DB_HOST=dpg-d4ev74u3jp1c738ov1v0-a.oregon-postgres.render.com
+DB_PORT=5432
+DB_DATABASE=cbf_antidoping
+DB_USERNAME=cbf_user
+DB_PASSWORD=Jwa4jbjLLmIfpkCNf34NfU3PXVpdfgxe
+
+SESSION_DRIVER=database
+LOG_CHANNEL=stderr
+RUN_MIGRATIONS=true
+
+================================================================================
+  APÓS CONFIGURAR
+================================================================================
+
+1. Clique em "Save Changes" (se houver)
+2. Faça um novo deploy:
+   - Clique em "Manual Deploy"
+   - Ou aguarde o deploy automático
+3. Aguarde o deploy completar
+4. Acesse: https://cbf-antidoping.onrender.com/test.php
+5. Agora deve mostrar: ✅ Conexão com banco: OK
+
+================================================================================
+  IMPORTANTE
+================================================================================
+
+- NÃO deixe valores placeholder como "seu-host-postgresql"
+- Use EXATAMENTE os valores acima
+- O APP_URL deve ser a URL real do seu app no Render
+- O APP_KEY será gerado automaticamente na primeira vez
+
+================================================================================
+

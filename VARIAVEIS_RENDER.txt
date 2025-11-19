@@ -11,15 +11,15 @@ No painel do Render, vá em "Environment" e adicione estas variáveis:
 APP_NAME=CBF_Antidoping
 APP_ENV=production
 APP_DEBUG=false
-APP_KEY=base64:GERAR_AQUI (veja abaixo como gerar)
-APP_URL=https://seu-app.onrender.com
+APP_KEY=base64:GERAR_AQUI
+APP_URL=https://cbf-antidoping-xyz9.onrender.com
 
 DB_CONNECTION=pgsql
-DB_HOST=seu-host-postgresql
+DB_HOST=dpg-abc123xyz789-a.oregon-postgres.render.com
 DB_PORT=5432
-DB_DATABASE=nome-do-banco
-DB_USERNAME=usuario-do-banco
-DB_PASSWORD=senha-do-banco
+DB_DATABASE=cbf_postgres_db
+DB_USERNAME=cbf_postgres_user
+DB_PASSWORD=Kj8mN2pQ9rT5wX7vB3nL6sF1hD4cA0zY
 
 SESSION_DRIVER=database
 LOG_CHANNEL=stderr
@@ -43,12 +43,12 @@ Copie a chave gerada (começa com base64:) e cole em APP_KEY
 Se seu banco está no Render, as credenciais estão em:
   Dashboard > Seu Banco PostgreSQL > Connection Info
 
-Exemplo:
-  DB_HOST=dpg-xxxxx-a.oregon-postgres.render.com
+Exemplo (SUBSTITUA pelos valores do SEU banco):
+  DB_HOST=dpg-abc123xyz789-a.oregon-postgres.render.com
   DB_PORT=5432
-  DB_DATABASE=cbf_postgres
+  DB_DATABASE=cbf_postgres_db
   DB_USERNAME=cbf_postgres_user
-  DB_PASSWORD=sua_senha_aqui
+  DB_PASSWORD=Kj8mN2pQ9rT5wX7vB3nL6sF1hD4cA0zY
 
 ================================================================================
   IMPORTANTE

@@ -1,0 +1,33 @@
+================================================================================
+  VARIÁVEIS DE AMBIENTE - EXEMPLO COM VALORES ALEATÓRIOS
+================================================================================
+Copie e cole estas variáveis no Render, substituindo pelos seus valores reais:
+
+APP_NAME=CBF_Antidoping
+APP_ENV=production
+APP_DEBUG=false
+APP_KEY=base64:GERAR_DEPOIS
+APP_URL=https://cbf-antidoping-xyz9.onrender.com
+
+DB_CONNECTION=pgsql
+DB_HOST=dpg-abc123xyz789-a.oregon-postgres.render.com
+DB_PORT=5432
+DB_DATABASE=cbf_postgres_db
+DB_USERNAME=cbf_postgres_user
+DB_PASSWORD=Kj8mN2pQ9rT5wX7vB3nL6sF1hD4cA0zY
+
+SESSION_DRIVER=database
+LOG_CHANNEL=stderr
+RUN_MIGRATIONS=true
+
+================================================================================
+  IMPORTANTE
+================================================================================
+- Substitua DB_HOST, DB_DATABASE, DB_USERNAME e DB_PASSWORD pelos valores
+  reais do seu banco PostgreSQL no Render
+- Gere o APP_KEY após o primeiro deploy usando:
+  php artisan key:generate --show
+- Ajuste o APP_URL para a URL real do seu app no Render
+
+================================================================================
+

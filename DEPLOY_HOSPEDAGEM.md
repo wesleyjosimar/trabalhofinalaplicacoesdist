@@ -9,8 +9,8 @@ Este projeto está configurado para rodar em qualquer hospedagem PHP comum.
 ================================================================================
 
 - PHP 8.1 ou superior
-- Extensões PHP: pdo, pdo_pgsql (ou pdo_mysql), mbstring, openssl, tokenizer
-- PostgreSQL ou MySQL
+- Extensões PHP: pdo, pdo_mysql, mbstring, openssl, tokenizer
+- MySQL 5.7+ ou MariaDB 10.3+
 - Apache com mod_rewrite OU Nginx
 - Composer (para instalar dependências)
 
@@ -46,9 +46,9 @@ Este projeto está configurado para rodar em qualquer hospedagem PHP comum.
    APP_KEY=GERAR_AQUI
    APP_URL=https://seu-dominio.com.br
 
-   DB_CONNECTION=pgsql
-   DB_HOST=seu-host-postgresql
-   DB_PORT=5432
+   DB_CONNECTION=mysql
+   DB_HOST=localhost
+   DB_PORT=3306
    DB_DATABASE=nome-do-banco
    DB_USERNAME=usuario
    DB_PASSWORD=senha

@@ -31,7 +31,7 @@ class UsuarioController {
             ];
 
             if ($this->usuarioModel->criar($dados)) {
-                header('Location: /usuarios.php?sucesso=1');
+                header('Location: usuarios.php?sucesso=1');
                 exit;
             } else {
                 $erro = 'Erro ao criar usuário';
@@ -46,7 +46,7 @@ class UsuarioController {
         $usuario = $this->usuarioModel->buscarPorId($id);
 
         if (!$usuario) {
-            header('Location: /usuarios.php');
+            header('Location: usuarios.php');
             exit;
         }
 
@@ -62,7 +62,7 @@ class UsuarioController {
             }
 
             if ($this->usuarioModel->atualizar($id, $dados)) {
-                header('Location: /usuarios.php?sucesso=1');
+                header('Location: usuarios.php?sucesso=1');
                 exit;
             } else {
                 $erro = 'Erro ao atualizar usuário';
@@ -75,7 +75,7 @@ class UsuarioController {
     public function delete() {
         $id = $_GET['id'] ?? 0;
         $this->usuarioModel->excluir($id);
-        header('Location: /usuarios.php?sucesso=1');
+        header('Location: usuarios.php?sucesso=1');
         exit;
     }
 }

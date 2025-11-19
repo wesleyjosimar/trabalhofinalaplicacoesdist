@@ -25,7 +25,7 @@ ob_start();
             </select>
         </div>
         <button type="submit" class="btn btn-success">Salvar</button>
-        <a href="/usuarios.php" class="btn">Cancelar</a>
+        <a href="usuarios.php" class="btn">Cancelar</a>
     </form>
 </div>
 <?php

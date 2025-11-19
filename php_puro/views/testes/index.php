@@ -5,7 +5,7 @@ ob_start();
 <div class="card">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
         <h2>Testes Antidoping</h2>
-        <a href="/testes.php?acao=create" class="btn">Novo Teste</a>
+        <a href="testes.php?acao=create" class="btn">Novo Teste</a>
     </div>
     
     <form method="GET" style="margin-bottom: 1rem;">
@@ -45,7 +45,7 @@ ob_start();
                         <td><?= htmlspecialchars($teste['laboratorio']) ?></td>
                         <td><?= ucfirst($teste['resultado']) ?></td>
                         <td>
-                            <a href="/testes.php?acao=edit&id=<?= $teste['id'] ?>" class="btn">Editar</a>
+                            <a href="testes.php?acao=edit&id=<?= $teste['id'] ?>" class="btn">Editar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

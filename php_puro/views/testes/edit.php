@@ -40,7 +40,7 @@ ob_start();
             <textarea name="observacoes" rows="4"><?= htmlspecialchars($teste['observacoes'] ?? '') ?></textarea>
         </div>
         <button type="submit" class="btn btn-success">Salvar</button>
-        <a href="/testes.php" class="btn">Cancelar</a>
+        <a href="testes.php" class="btn">Cancelar</a>
     </form>
 </div>
 <?php

@@ -27,7 +27,7 @@ class AtletaController {
         $atleta = $this->atletaModel->buscarPorId($id);
         
         if (!$atleta) {
-            header('Location: /atletas.php');
+            header('Location: atletas.php');
             exit;
         }
 
@@ -51,7 +51,7 @@ class AtletaController {
             ];
 
             if ($this->atletaModel->criar($dados)) {
-                header('Location: /atletas.php?sucesso=1');
+                header('Location: atletas.php?sucesso=1');
                 exit;
             } else {
                 $erro = 'Erro ao criar atleta';
@@ -66,7 +66,7 @@ class AtletaController {
         $atleta = $this->atletaModel->buscarPorId($id);
 
         if (!$atleta) {
-            header('Location: /atletas.php');
+            header('Location: atletas.php');
             exit;
         }
 
@@ -81,7 +81,7 @@ class AtletaController {
             ];
 
             if ($this->atletaModel->atualizar($id, $dados)) {
-                header('Location: /atletas.php?sucesso=1');
+                header('Location: atletas.php?sucesso=1');
                 exit;
             } else {
                 $erro = 'Erro ao atualizar atleta';
@@ -94,7 +94,7 @@ class AtletaController {
     public function inativar() {
         $id = $_GET['id'] ?? 0;
         $this->atletaModel->inativar($id);
-        header('Location: /atletas.php?sucesso=1');
+        header('Location: atletas.php?sucesso=1');
         exit;
     }
 }

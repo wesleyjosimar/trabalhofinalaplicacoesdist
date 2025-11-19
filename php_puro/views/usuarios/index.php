@@ -5,7 +5,7 @@ ob_start();
 <div class="card">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
         <h2>Usuários</h2>
-        <a href="/usuarios.php?acao=create" class="btn">Novo Usuário</a>
+        <a href="usuarios.php?acao=create" class="btn">Novo Usuário</a>
     </div>
     
     <table>
@@ -31,9 +31,9 @@ ob_start();
                         <td><?= ucfirst($usuario['perfil']) ?></td>
                         <td><?= date('d/m/Y H:i', strtotime($usuario['created_at'])) ?></td>
                         <td>
-                            <a href="/usuarios.php?acao=edit&id=<?= $usuario['id'] ?>" class="btn">Editar</a>
+                            <a href="usuarios.php?acao=edit&id=<?= $usuario['id'] ?>" class="btn">Editar</a>
                             <?php if ($usuario['id'] != $_SESSION['usuario_id']): ?>
-                                <a href="/usuarios.php?acao=delete&id=<?= $usuario['id'] ?>" class="btn btn-danger" onclick="return confirm('Deseja excluir este usuário?')">Excluir</a>
+                                <a href="usuarios.php?acao=delete&id=<?= $usuario['id'] ?>" class="btn btn-danger" onclick="return confirm('Deseja excluir este usuário?')">Excluir</a>
                             <?php endif; ?>
                         </td>
                     </tr>

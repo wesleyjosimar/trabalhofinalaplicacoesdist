@@ -36,7 +36,7 @@
         <div class="user-info">
             <?php if (isset($_SESSION['usuario_nome'])): ?>
                 <span><?= htmlspecialchars($_SESSION['usuario_nome']) ?> (<?= $_SESSION['usuario_perfil'] ?>)</span>
-                <a href="/logout.php" style="color: white; margin-left: 1rem;">Sair</a>
+                <a href="logout.php" style="color: white; margin-left: 1rem;">Sair</a>
             <?php endif; ?>
         </div>
         <div style="clear: both;"></div>
@@ -44,11 +44,11 @@
     
     <?php if (isset($_SESSION['usuario_id'])): ?>
     <div class="nav">
-        <a href="/">Início</a>
-        <a href="/atletas.php">Atletas</a>
-        <a href="/testes.php">Testes</a>
+        <a href="index.php">Início</a>
+        <a href="atletas.php">Atletas</a>
+        <a href="testes.php">Testes</a>
         <?php if ($_SESSION['usuario_perfil'] === 'admin'): ?>
-            <a href="/usuarios.php">Usuários</a>
+            <a href="usuarios.php">Usuários</a>
         <?php endif; ?>
     </div>
     <?php endif; ?>

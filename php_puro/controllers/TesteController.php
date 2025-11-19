@@ -40,7 +40,7 @@ class TesteController {
             ];
 
             if ($this->testeModel->criar($dados)) {
-                header('Location: /testes.php?sucesso=1');
+                header('Location: testes.php?sucesso=1');
                 exit;
             } else {
                 $erro = 'Erro ao criar teste';
@@ -55,7 +55,7 @@ class TesteController {
         $teste = $this->testeModel->buscarPorId($id);
 
         if (!$teste) {
-            header('Location: /testes.php');
+            header('Location: testes.php');
             exit;
         }
 
@@ -72,7 +72,7 @@ class TesteController {
             ];
 
             if ($this->testeModel->atualizar($id, $dados)) {
-                header('Location: /testes.php?sucesso=1');
+                header('Location: testes.php?sucesso=1');
                 exit;
             } else {
                 $erro = 'Erro ao atualizar teste';

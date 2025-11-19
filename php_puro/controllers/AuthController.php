@@ -26,7 +26,7 @@ class AuthController {
                 $_SESSION['usuario_email'] = $usuario['email'];
                 $_SESSION['usuario_perfil'] = $usuario['perfil'];
                 
-                header('Location: /');
+                header('Location: index.php');
                 exit;
             } else {
                 $erro = 'Email ou senha incorretos';
@@ -38,7 +38,7 @@ class AuthController {
 
     public function logout() {
         session_destroy();
-        header('Location: /login.php');
+        header('Location: login.php');
         exit;
     }
 

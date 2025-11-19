@@ -1,6 +1,15 @@
 #!/bin/sh
 set -e
 
+# Criar diretórios necessários
+echo "Criando diretórios necessários..."
+mkdir -p /var/www/storage/framework/views
+mkdir -p /var/www/storage/framework/sessions
+mkdir -p /var/www/storage/framework/cache
+mkdir -p /var/www/storage/logs
+chmod -R 775 /var/www/storage
+chmod -R 775 /var/www/bootstrap/cache
+
 # Limpar caches antes de começar
 echo "Limpando caches..."
 php artisan config:clear || true

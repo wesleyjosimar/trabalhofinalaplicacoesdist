@@ -1,0 +1,16 @@
+# Permitir acesso a arquivos PHP
+<FilesMatch "\.php$">
+    Require all granted
+</FilesMatch>
+
+# Permitir acesso a arquivos estáticos
+<FilesMatch "\.(css|js|jpg|jpeg|png|gif|ico|svg)$">
+    Require all granted
+</FilesMatch>
+
+# Desabilitar listagem de diretórios
+Options -Indexes
+
+# Permitir acesso geral
+Require all granted
+

@@ -42,10 +42,12 @@ RUN chown -R www-data:www-data /var/www \
 # Expor porta (Render injeta $PORT dinamicamente)
 EXPOSE 8000
 
-# Script de inicialização
+# Scripts de inicialização
 COPY docker-entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+COPY start-server.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh && \
+    chmod +x /usr/local/bin/start-server.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD cd /var/www && php -S 0.0.0.0:${PORT:-8000} -t public public/index.php
+CMD ["start-server.sh"]
 

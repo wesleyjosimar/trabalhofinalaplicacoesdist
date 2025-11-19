@@ -1,29 +1,27 @@
 # 🏆 CBF - Sistema de Cadastro de Atletas e Testes Antidoping
 
-Sistema web simples e monolítico desenvolvido em Laravel + Blade para gerenciamento de atletas e testes antidoping da Confederação Brasileira de Futebol (CBF).
-
-> **Nota**: Este repositório contém a versão monolítica em Laravel. A versão anterior (NestJS + React) está nas pastas `backend/` e `frontend/`.
+Sistema web simples desenvolvido em **PHP puro** (sem frameworks) para gerenciamento de atletas e testes antidoping da Confederação Brasileira de Futebol (CBF).
 
 ## 📋 Características
 
-- **Stack Simples**: Laravel 10 + Blade (PHP)
+- **Stack Simples**: PHP 7.4+ puro, sem frameworks
 - **Banco de Dados**: MySQL
-- **Arquitetura**: Monolítica, sem complexidade desnecessária
-- **Autenticação**: Sistema de sessão simples
+- **Arquitetura**: MVC simples e direta
+- **Autenticação**: Sistema de sessão PHP nativo
 - **Interface**: Design limpo e responsivo
-- **Deploy**: Hospedagem PHP tradicional (Apache/Nginx)
+- **Deploy**: Hospedagem PHP tradicional (CWP, cPanel, Apache/Nginx)
 
 ## 🎯 Funcionalidades
 
 ### 1. Cadastro de Atletas
 - Criar, listar, editar e inativar atletas
 - Campos: nome, data de nascimento, documento, clube, federação, status
-- Busca e filtros
+- Busca por nome ou documento
 
 ### 2. Testes Antidoping
 - Registrar testes antidoping
 - Editar resultado dos testes
-- Listagem com filtros por atleta e resultado
+- Listagem com filtros por atleta
 - Histórico completo por atleta
 
 ### 3. Controle de Usuários
@@ -32,99 +30,72 @@ Sistema web simples e monolítico desenvolvido em Laravel + Blade para gerenciam
 - Admin pode gerenciar usuários
 - Operacional não pode gerenciar usuários
 
-## 🚀 Instalação Local
+## 🚀 Instalação no CWP (CentOS Web Panel)
 
-### Pré-requisitos
+### 1. Copiar arquivos
+Copie toda a pasta `php_puro/` para `public_html/` no servidor.
 
-- PHP 8.1 ou superior
-- Composer
-- MySQL 5.7+ ou PostgreSQL 10+
+### 2. Configurar banco de dados
+Edite `php_puro/config.php` e ajuste as credenciais:
+```php
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'amorexpr_teste');
+define('DB_USER', 'amorexpr_admin');
+define('DB_PASS', 'Testando@09');
+```
 
-### Passo a Passo
+### 3. Criar tabelas no banco
+Execute o arquivo `database.sql` no phpMyAdmin do CWP.
 
-1. **Instale as dependências**
+### 4. Criar usuários padrão
+No Terminal SSH do CWP:
 ```bash
-composer install
+cd /home/usuario/public_html
+php criar_usuarios.php
 ```
 
-2. **Configure o ambiente**
-```bash
-cp .env.example .env
-php artisan key:generate
+### 5. Acessar a aplicação
+- URL: `https://teste.amorexpress.com.br/login.php`
+- **Login padrão:**
+  - Email: `admin@cbf.com.br`
+  - Senha: `admin123`
+
+## 📁 Estrutura do Projeto
+
+```
+.
+├── php_puro/                 # Aplicação PHP pura
+│   ├── config.php            # Configurações
+│   ├── Database.php          # Conexão com banco
+│   ├── index.php             # Página inicial
+│   ├── login.php             # Login
+│   ├── logout.php            # Logout
+│   ├── atletas.php           # CRUD Atletas
+│   ├── testes.php            # CRUD Testes
+│   ├── usuarios.php          # CRUD Usuários
+│   ├── criar_usuarios.php    # Script para criar usuários
+│   ├── models/               # Modelos
+│   ├── controllers/          # Controllers
+│   └── views/               # Views HTML
+├── database.sql              # Script SQL para criar tabelas
+└── README.md                 # Este arquivo
 ```
 
-3. **Configure o banco de dados no arquivo `.env`**
-```env
-DB_CONNECTION=mysql
-DB_HOST=localhost
-DB_PORT=3306
-DB_DATABASE=cbf_antidoping
-DB_USERNAME=seu_usuario_mysql
-DB_PASSWORD=sua_senha_mysql
-```
+## 🔒 Segurança
 
-4. **Execute as migrations**
-```bash
-php artisan migrate
-php artisan db:seed
-```
+- Senhas hasheadas com `password_hash()` (bcrypt)
+- Verificação de autenticação em todas as páginas
+- Verificação de perfil admin para gestão de usuários
+- Proteção contra SQL Injection (PDO prepared statements)
+- Escape de HTML (`htmlspecialchars`)
 
-5. **Inicie o servidor**
-```bash
-php artisan serve
-```
+## 📦 Requisitos
 
-6. **Acesse**: `http://localhost:8000`
+- PHP 7.4 ou superior
+- MySQL 5.7 ou superior
+- Extensões PHP: PDO, PDO_MySQL
 
-**Login padrão:**
-- Email: `admin@cbf.com.br`
-- Senha: `admin123`
+## 📝 Licença
 
-## ☁️ Deploy em Hospedagem PHP
+Este projeto foi desenvolvido para a Confederação Brasileira de Futebol (CBF).
 
-O projeto está pronto para deploy em qualquer hospedagem PHP tradicional (Apache/Nginx).
-
-### Instruções de Deploy
-
-Para instruções detalhadas de deploy em hospedagem compartilhada, veja: `DEPLOY_HOSPEDAGEM.md`
-
-**Resumo rápido:**
-1. Faça upload dos arquivos
-2. Configure o Document Root para a pasta `public`
-3. Crie o banco MySQL
-4. Configure o arquivo `.env`
-5. Execute: `composer install`, `php artisan migrate`, `php artisan db:seed`
-
-## 📊 Estrutura do Banco de Dados
-
-- **usuarios**: Usuários do sistema (admin/operacional)
-- **atletas**: Cadastro de atletas
-- **testes**: Registro de testes antidoping
-- **sessions**: Sessões de usuários
-
-## 🛣️ Rotas Principais
-
-- `/login` - Tela de login
-- `/atletas` - Lista de atletas
-- `/testes` - Lista de testes
-- `/usuarios` - Gerenciar usuários (apenas admin)
-
-## 📝 Scripts Disponíveis
-
-- `INSTALAR.bat` - Instalação automática (Windows)
-- `INICIAR.bat` - Iniciar servidor de desenvolvimento (Windows)
-
-## 🔐 Segurança
-
-- Senhas hasheadas com bcrypt
-- Middleware de autenticação
-- Validação de dados
-- Proteção CSRF
-
-## 📞 Suporte
-
-Para dúvidas, consulte a documentação do Laravel: https://laravel.com/docs
-
----
-
-**Desenvolvido para a Confederação Brasileira de Futebol (CBF)**

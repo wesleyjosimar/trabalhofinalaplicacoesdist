@@ -1,0 +1,51 @@
+================================================================================
+  SE DER ERRO NO SQL, USE O SCRIPT PHP
+================================================================================
+
+OPÇÃO 1: VIA SCRIPT PHP (RECOMENDADO - SEMPRE FUNCIONA)
+================================================================================
+
+No Terminal SSH do CWP:
+cd /home/usuario/public_html/teste.amorexpress.com.br
+php criar_usuarios.php
+
+Isso cria os usuários com hashes corretos automaticamente!
+
+================================================================================
+
+OPÇÃO 2: VIA phpMyAdmin (SE O SQL DER ERRO)
+================================================================================
+
+1. Acesse phpMyAdmin
+2. Selecione o banco: amorexpr_teste
+3. Vá na aba SQL
+4. Execute este SQL (um por vez):
+
+-- Primeiro usuário
+INSERT INTO usuarios (nome, email, senha, perfil, created_at, updated_at) 
+VALUES ('Administrador', 'admin@cbf.com.br', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin', NOW(), NOW());
+
+-- Segundo usuário
+INSERT INTO usuarios (nome, email, senha, perfil, created_at, updated_at) 
+VALUES ('Operador', 'operador@cbf.com.br', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'operacional', NOW(), NOW());
+
+================================================================================
+
+SE DER ERRO DE EMAIL DUPLICADO:
+================================================================================
+
+Execute primeiro:
+DELETE FROM usuarios WHERE email IN ('admin@cbf.com.br', 'operador@cbf.com.br');
+
+Depois execute os INSERTs novamente.
+
+================================================================================
+
+CREDENCIAIS:
+================================================================================
+
+Admin: admin@cbf.com.br / admin123
+Operador: operador@cbf.com.br / operador123
+
+================================================================================
+

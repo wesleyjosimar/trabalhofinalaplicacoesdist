@@ -16,7 +16,7 @@ define('APP_NAME', 'CBF Antidoping');
 define('APP_URL', 'https://teste.amorexpress.com.br');
 define('APP_DEBUG', true);
 
-// Caminhos
+// Caminhos - ajustados para funcionar diretamente no subdomínio
 define('BASE_PATH', __DIR__);
 define('VIEWS_PATH', BASE_PATH . '/views');
 define('MODELS_PATH', BASE_PATH . '/models');

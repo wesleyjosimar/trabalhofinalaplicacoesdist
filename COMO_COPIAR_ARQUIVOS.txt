@@ -1,0 +1,54 @@
+================================================================================
+  COMO COPIAR OS ARQUIVOS PARA O SUBDOMÍNIO
+================================================================================
+
+NO FILE MANAGER DO CWP:
+================================================================================
+
+1. Acesse: public_html/teste.amorexpress.com.br/
+
+2. Delete tudo que estiver lá (se houver)
+
+3. Copie TODO o conteúdo da pasta php_puro/ para teste.amorexpress.com.br/
+   - NÃO copie a pasta php_puro
+   - Copie os ARQUIVOS de dentro dela:
+     * config.php
+     * Database.php
+     * index.php
+     * login.php
+     * logout.php
+     * atletas.php
+     * testes.php
+     * usuarios.php
+     * criar_usuarios.php
+     * teste.php
+     * .htaccess
+     * models/ (pasta inteira)
+     * controllers/ (pasta inteira)
+     * views/ (pasta inteira)
+
+4. Estrutura final deve ser:
+   teste.amorexpress.com.br/
+   ├── config.php
+   ├── Database.php
+   ├── index.php
+   ├── login.php
+   ├── logout.php
+   ├── atletas.php
+   ├── testes.php
+   ├── usuarios.php
+   ├── criar_usuarios.php
+   ├── teste.php
+   ├── .htaccess
+   ├── models/
+   ├── controllers/
+   └── views/
+
+5. Ajuste permissões (se necessário):
+   chmod 755 *.php
+   chmod 755 -R models/ controllers/ views/
+
+6. Acesse: https://teste.amorexpress.com.br/login.php
+
+================================================================================
+

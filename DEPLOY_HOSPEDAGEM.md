@@ -49,9 +49,9 @@ Este projeto está configurado para rodar em qualquer hospedagem PHP comum.
    DB_CONNECTION=mysql
    DB_HOST=localhost
    DB_PORT=3306
-   DB_DATABASE=nome-do-banco
-   DB_USERNAME=usuario
-   DB_PASSWORD=senha
+   DB_DATABASE=amorexpr_teste
+   DB_USERNAME=amorexpr_admin
+   DB_PASSWORD=Testando@09
 
    SESSION_DRIVER=database
    LOG_CHANNEL=stack

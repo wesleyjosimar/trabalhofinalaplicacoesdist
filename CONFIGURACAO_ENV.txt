@@ -1,15 +1,9 @@
 ================================================================================
-  CREDENCIAIS DO BANCO MYSQL
+  CONFIGURAÇÃO DO ARQUIVO .env
 ================================================================================
 
-Hostname: localhost
-Port: 3306
-Database: amorexpr_teste
-Username: amorexpr_admin
-Password: Testando@09
+Crie um arquivo .env na raiz do projeto com estas configurações:
 
-================================================================================
-  VARIÁVEIS PARA O ARQUIVO .env
 ================================================================================
 
 APP_NAME=CBF_Antidoping
@@ -26,15 +20,16 @@ DB_USERNAME=amorexpr_admin
 DB_PASSWORD=Testando@09
 
 SESSION_DRIVER=database
-LOG_CHANNEL=stderr
-RUN_MIGRATIONS=true
+SESSION_LIFETIME=120
+LOG_CHANNEL=stack
 
 ================================================================================
   IMPORTANTE
 ================================================================================
-- Substitua APP_URL pela URL real do seu Web Service no Render
-- Gere APP_KEY após o primeiro deploy: php artisan key:generate --show
-- Estas são as credenciais REAIS do seu banco!
+
+- Substitua APP_URL pela URL real do seu site
+- Gere APP_KEY executando: php artisan key:generate
+- O arquivo .env não deve ser commitado no Git (já está no .gitignore)
 
 ================================================================================
 

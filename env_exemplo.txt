@@ -2,7 +2,7 @@ APP_NAME=CBF_Antidoping
 APP_ENV=production
 APP_DEBUG=false
 APP_KEY=
-APP_URL=https://seu-dominio.com.br
+APP_URL=https://teste.amorexpress.com.br
 
 DB_CONNECTION=mysql
 DB_HOST=localhost

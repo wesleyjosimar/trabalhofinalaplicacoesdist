@@ -5,8 +5,7 @@
 IMPORTANTE: Após colocar o .env no servidor, você PRECISA:
 
 1. AJUSTAR A URL DO SITE:
-   Altere: APP_URL=https://seu-dominio.com.br
-   Para: APP_URL=https://SEU-DOMINIO-REAL.com.br
+   URL configurada: APP_URL=https://teste.amorexpress.com.br
 
 2. GERAR A CHAVE DA APLICAÇÃO:
    No Terminal SSH do CWP:

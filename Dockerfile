@@ -47,5 +47,5 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD php -S 0.0.0.0:${PORT:-8000} -t public public/index.php
+CMD php -S 0.0.0.0:${PORT:-8000} public/index.php
 

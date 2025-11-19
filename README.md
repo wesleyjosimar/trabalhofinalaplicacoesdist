@@ -50,7 +50,7 @@ Execute o arquivo `database.sql` no phpMyAdmin do CWP.
 ### 4. Criar usuários padrão
 No Terminal SSH do CWP:
 ```bash
-cd /home/usuario/public_html
+cd /home/usuario/public_html/teste.amorexpress.com.br
 php criar_usuarios.php
 ```
 
@@ -64,21 +64,22 @@ php criar_usuarios.php
 
 ```
 .
-├── php_puro/                 # Aplicação PHP pura
-│   ├── config.php            # Configurações
-│   ├── Database.php          # Conexão com banco
-│   ├── index.php             # Página inicial
-│   ├── login.php             # Login
-│   ├── logout.php            # Logout
-│   ├── atletas.php           # CRUD Atletas
-│   ├── testes.php            # CRUD Testes
-│   ├── usuarios.php          # CRUD Usuários
-│   ├── criar_usuarios.php    # Script para criar usuários
-│   ├── models/               # Modelos
-│   ├── controllers/          # Controllers
-│   └── views/               # Views HTML
-├── database.sql              # Script SQL para criar tabelas
-└── README.md                 # Este arquivo
+├── config.php            # Configurações
+├── Database.php          # Conexão com banco
+├── index.php             # Página inicial
+├── login.php             # Login
+├── logout.php            # Logout
+├── atletas.php           # CRUD Atletas
+├── testes.php            # CRUD Testes
+├── usuarios.php          # CRUD Usuários
+├── criar_usuarios.php    # Script para criar usuários
+├── teste.php             # Arquivo de teste
+├── .htaccess             # Configuração Apache
+├── models/               # Modelos
+├── controllers/          # Controllers
+├── views/                # Views HTML
+├── database.sql          # Script SQL para criar tabelas
+└── README.md             # Este arquivo
 ```
 
 ## 🔒 Segurança

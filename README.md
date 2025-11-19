@@ -7,11 +7,11 @@ Sistema web simples e monolítico desenvolvido em Laravel + Blade para gerenciam
 ## 📋 Características
 
 - **Stack Simples**: Laravel 10 + Blade (PHP)
-- **Banco de Dados**: MySQL/PostgreSQL
+- **Banco de Dados**: MySQL
 - **Arquitetura**: Monolítica, sem complexidade desnecessária
 - **Autenticação**: Sistema de sessão simples
 - **Interface**: Design limpo e responsivo
-- **Deploy**: Configurado para Render.com
+- **Deploy**: Hospedagem PHP tradicional (Apache/Nginx)
 
 ## 🎯 Funcionalidades
 
@@ -80,18 +80,20 @@ php artisan serve
 - Email: `admin@cbf.com.br`
 - Senha: `admin123`
 
-## ☁️ Deploy no Render
+## ☁️ Deploy em Hospedagem PHP
 
-O projeto está configurado para deploy automático no Render.com.
+O projeto está pronto para deploy em qualquer hospedagem PHP tradicional (Apache/Nginx).
 
-### Configuração Rápida
+### Instruções de Deploy
 
-1. Conecte este repositório ao Render
-2. Crie um banco PostgreSQL no Render
-3. Configure as variáveis de ambiente (veja `INSTRUCOES_RENDER.txt`)
-4. O deploy será automático via `render.yaml`
+Para instruções detalhadas de deploy em hospedagem compartilhada, veja: `DEPLOY_HOSPEDAGEM.md`
 
-Para instruções detalhadas, veja: `INSTRUCOES_RENDER.txt`
+**Resumo rápido:**
+1. Faça upload dos arquivos
+2. Configure o Document Root para a pasta `public`
+3. Crie o banco MySQL
+4. Configure o arquivo `.env`
+5. Execute: `composer install`, `php artisan migrate`, `php artisan db:seed`
 
 ## 📊 Estrutura do Banco de Dados
 
@@ -110,9 +112,7 @@ Para instruções detalhadas, veja: `INSTRUCOES_RENDER.txt`
 ## 📝 Scripts Disponíveis
 
 - `INSTALAR.bat` - Instalação automática (Windows)
-- `INICIAR.bat` - Iniciar servidor (Windows)
-- `build.sh` - Script de build para produção
-- `deploy.sh` - Script de deploy
+- `INICIAR.bat` - Iniciar servidor de desenvolvimento (Windows)
 
 ## 🔐 Segurança
 

@@ -51,11 +51,14 @@ class RelatorioController {
             });
         }
 
-        $dados['testes_filtrados'] = $testes;
+        $dados['testes_filtrados'] = array_values($testes); // Reindexar array
         $dados['filtro'] = $filtro;
         $dados['data_inicio'] = $dataInicio;
         $dados['data_fim'] = $dataFim;
 
+        // Extrair variáveis do array para a view
+        extract($dados);
+        
         include VIEWS_PATH . '/relatorios/index.php';
     }
 

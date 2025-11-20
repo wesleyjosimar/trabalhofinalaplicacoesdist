@@ -45,8 +45,9 @@
     <?php if (isset($_SESSION['usuario_id'])): ?>
     <div class="nav">
         <a href="index.php">Início</a>
-        <a href="atletas.php">Atletas</a>
-        <a href="testes.php">Testes</a>
+                <a href="atletas.php">Atletas</a>
+                <a href="testes.php">Testes</a>
+                <a href="relatorios.php">Relatórios</a>
         <?php if ($_SESSION['usuario_perfil'] === 'admin'): ?>
             <a href="usuarios.php">Usuários</a>
         <?php endif; ?>

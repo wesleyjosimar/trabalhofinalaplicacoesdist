@@ -1,6 +1,6 @@
 # 🏆 CBF - Sistema de Cadastro de Atletas e Testes Antidoping
 
-Sistema web simples desenvolvido em **PHP puro** (sem frameworks) para gerenciamento de atletas e testes antidoping da Confederação Brasileira de Futebol (CBF).
+Sistema web desenvolvido em **PHP puro** (sem frameworks) para gerenciamento de atletas e testes antidoping da Confederação Brasileira de Futebol (CBF).
 
 ## 📋 Características
 
@@ -17,69 +17,86 @@ Sistema web simples desenvolvido em **PHP puro** (sem frameworks) para gerenciam
 - Criar, listar, editar e inativar atletas
 - Campos: nome, data de nascimento, documento, clube, federação, status
 - Busca por nome ou documento
+- Filtro por status (ativo/inativo)
 
 ### 2. Testes Antidoping
 - Registrar testes antidoping
 - Editar resultado dos testes
-- Listagem com filtros por atleta
+- Listagem com filtros por atleta e resultado
 - Histórico completo por atleta
 
-### 3. Controle de Usuários
+### 3. Relatórios
+- Dashboard com estatísticas gerais
+- Filtros por resultado e período
+- Exportação para CSV
+
+### 4. Controle de Usuários
 - Login com email e senha
 - Dois perfis: Admin e Operacional
 - Admin pode gerenciar usuários
 - Operacional não pode gerenciar usuários
 
-## 🚀 Instalação no CWP (CentOS Web Panel)
+## 🚀 Instalação
 
-### 1. Copiar arquivos
-Copie todos os arquivos da raiz do projeto para `public_html/teste.amorexpress.com.br/` no servidor.
+### Opção 1: XAMPP (Local)
 
-### 2. Configurar banco de dados
-Edite `config.php` e ajuste as credenciais:
-```php
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'amorexpr_teste');
-define('DB_USER', 'amorexpr_admin');
-define('DB_PASS', 'Testando@09');
-```
+1. **Instalar XAMPP**
+   - Download: https://www.apachefriends.org/
+   - Instale e inicie Apache + MySQL
 
-### 3. Criar tabelas no banco
-Execute o arquivo `database.sql` no phpMyAdmin do CWP.
+2. **Criar banco de dados**
+   - Acesse: `http://localhost/phpmyadmin`
+   - Crie o banco: `cbf_antidoping`
+   - Execute o arquivo `database.sql`
 
-### 4. Criar usuários padrão
-No Terminal SSH do CWP:
-```bash
-cd /home/usuario/public_html/teste.amorexpress.com.br
-php criar_usuarios.php
-```
+3. **Copiar arquivos**
+   - Copie todos os arquivos para: `C:\xampp\htdocs\cbf\`
 
-### 5. Acessar a aplicação
-- URL: `https://teste.amorexpress.com.br/login.php`
-- **Login padrão:**
-  - Email: `admin@cbf.com.br`
-  - Senha: `admin123`
+4. **Configurar**
+   - Edite `config.php` se necessário (padrão: root/sem senha)
+
+5. **Criar usuários**
+   - Acesse: `http://localhost/cbf/testar_banco.php`
+   - OU execute: `php criar_usuarios.php`
+
+6. **Acessar**
+   - URL: `http://localhost/cbf/login.php`
+   - Login: `admin@cbf.com.br` / `admin123`
+
+### Opção 2: CWP (Produção)
+
+1. **Copiar arquivos**
+   - Copie todos os arquivos para `public_html/teste.amorexpress.com.br/`
+
+2. **Configurar banco**
+   - Edite `config.php` com as credenciais do banco
+   - Execute `database.sql` no phpMyAdmin
+
+3. **Criar usuários**
+   - Execute `inserir_usuarios.sql` no phpMyAdmin
+   - OU execute: `php criar_usuarios.php` via SSH
 
 ## 📁 Estrutura do Projeto
 
 ```
 .
-├── config.php            # Configurações
-├── Database.php          # Conexão com banco
-├── index.php             # Página inicial
-├── login.php             # Login
-├── logout.php            # Logout
-├── atletas.php           # CRUD Atletas
-├── testes.php            # CRUD Testes
-├── usuarios.php          # CRUD Usuários
-├── criar_usuarios.php    # Script para criar usuários
-├── teste.php             # Arquivo de teste
-├── .htaccess             # Configuração Apache
-├── models/               # Modelos
-├── controllers/          # Controllers
-├── views/                # Views HTML
-├── database.sql          # Script SQL para criar tabelas
-└── README.md             # Este arquivo
+├── config.php              # Configurações
+├── Database.php            # Conexão com banco
+├── index.php               # Página inicial
+├── login.php               # Login
+├── logout.php             # Logout
+├── atletas.php            # CRUD Atletas
+├── testes.php             # CRUD Testes
+├── relatorios.php         # Relatórios
+├── usuarios.php           # CRUD Usuários
+├── criar_usuarios.php     # Script para criar usuários
+├── teste.php              # Diagnóstico do sistema
+├── testar_banco.php       # Teste de conexão e usuários
+├── database.sql           # Script SQL para criar tabelas
+├── inserir_usuarios.sql   # SQL para inserir usuários padrão
+├── models/                # Modelos
+├── controllers/           # Controllers
+└── views/                 # Views HTML
 ```
 
 ## 🔒 Segurança
@@ -96,7 +113,15 @@ php criar_usuarios.php
 - MySQL 5.7 ou superior
 - Extensões PHP: PDO, PDO_MySQL
 
+## 📝 Credenciais Padrão
+
+- **Admin**: `admin@cbf.com.br` / `admin123`
+- **Operador**: `operador@cbf.com.br` / `operador123`
+
+## 📄 Documentação Adicional
+
+- `PLANEJAMENTO_IMPLANTACAO.md` - Documento completo de planejamento para aplicação distribuída
+
 ## 📝 Licença
 
 Este projeto foi desenvolvido para a Confederação Brasileira de Futebol (CBF).
-

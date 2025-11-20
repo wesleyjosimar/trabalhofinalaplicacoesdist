@@ -45,5 +45,5 @@ ob_start();
 </div>
 <?php
 $conteudo = ob_get_clean();
-include __DIR__ . '/layout.php';
+include __DIR__ . '/../layout.php';
 

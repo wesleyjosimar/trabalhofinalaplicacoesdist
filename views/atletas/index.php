@@ -8,11 +8,16 @@ ob_start();
         <a href="atletas.php?acao=create" class="btn">Novo Atleta</a>
     </div>
     
-    <form method="GET" style="margin-bottom: 1rem;">
-        <input type="text" name="filtro" placeholder="Buscar por nome ou documento..." value="<?= htmlspecialchars($_GET['filtro'] ?? '') ?>" style="width: 300px; display: inline-block;">
-        <button type="submit" class="btn">Buscar</button>
-        <?php if (!empty($_GET['filtro'])): ?>
-            <a href="atletas.php" class="btn">Limpar</a>
+    <form method="GET" style="margin-bottom: 1rem; display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+        <input type="text" name="filtro" placeholder="Buscar por nome ou documento..." value="<?= htmlspecialchars($_GET['filtro'] ?? '') ?>" style="flex: 1; min-width: 250px; padding: 0.5rem;">
+        <select name="status_filtro" style="padding: 0.5rem;">
+            <option value="">Todos os status</option>
+            <option value="ativo" <?= ($_GET['status_filtro'] ?? '') === 'ativo' ? 'selected' : '' ?>>Apenas Ativos</option>
+            <option value="inativo" <?= ($_GET['status_filtro'] ?? '') === 'inativo' ? 'selected' : '' ?>>Apenas Inativos</option>
+        </select>
+        <button type="submit" class="btn">🔍 Buscar</button>
+        <?php if (!empty($_GET['filtro']) || !empty($_GET['status_filtro'])): ?>
+            <a href="atletas.php" class="btn" style="background: #666;">Limpar</a>
         <?php endif; ?>
     </form>
     
@@ -55,5 +60,5 @@ ob_start();
 </div>
 <?php
 $conteudo = ob_get_clean();
-include __DIR__ . '/layout.php';
+include __DIR__ . '/../layout.php';
 

@@ -20,8 +20,30 @@ class TesteController {
     }
 
     public function index() {
+        $filtro = $_GET['filtro'] ?? '';
+        $resultadoFiltro = $_GET['resultado_filtro'] ?? '';
         $atletaId = $_GET['atleta_id'] ?? null;
+        
         $testes = $this->testeModel->listar($atletaId);
+        
+        if ($filtro) {
+            $atletas = $this->atletaModel->listar();
+            $atletasFiltrados = array_filter($atletas, function($atleta) use ($filtro) {
+                return stripos($atleta['nome'], $filtro) !== false;
+            });
+            $idsAtletas = array_column($atletasFiltrados, 'id');
+            
+            $testes = array_filter($testes, function($teste) use ($idsAtletas) {
+                return in_array($teste['atleta_id'], $idsAtletas);
+            });
+        }
+        
+        if ($resultadoFiltro) {
+            $testes = array_filter($testes, function($teste) use ($resultadoFiltro) {
+                return $teste['resultado'] === $resultadoFiltro;
+            });
+        }
+        
         $atletas = $this->atletaModel->listar();
         require_once VIEWS_PATH . '/testes/index.php';
     }

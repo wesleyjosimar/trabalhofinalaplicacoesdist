@@ -18,7 +18,22 @@ class AtletaController {
 
     public function index() {
         $filtro = $_GET['filtro'] ?? '';
-        $atletas = $this->atletaModel->listar($filtro);
+        $statusFiltro = $_GET['status_filtro'] ?? '';
+        $atletas = $this->atletaModel->listar();
+        
+        if ($filtro) {
+            $atletas = array_filter($atletas, function($atleta) use ($filtro) {
+                return stripos($atleta['nome'], $filtro) !== false ||
+                       stripos($atleta['documento'], $filtro) !== false;
+            });
+        }
+        
+        if ($statusFiltro) {
+            $atletas = array_filter($atletas, function($atleta) use ($statusFiltro) {
+                return $atleta['status'] === $statusFiltro;
+            });
+        }
+        
         require_once VIEWS_PATH . '/atletas/index.php';
     }
 

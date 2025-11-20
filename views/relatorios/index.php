@@ -88,6 +88,7 @@ ob_start();
                 </tr>
             <?php else: ?>
                 <?php 
+                require_once __DIR__ . '/../../models/Atleta.php';
                 $atletaModel = new Atleta();
                 foreach ($testes_filtrados as $teste): 
                     $atleta = $atletaModel->buscarPorId($teste['atleta_id']);

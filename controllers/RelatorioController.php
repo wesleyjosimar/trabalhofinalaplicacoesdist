@@ -25,13 +25,16 @@ class RelatorioController {
         $dataInicio = $_GET['data_inicio'] ?? '';
         $dataFim = $_GET['data_fim'] ?? '';
         
+        $todosAtletas = $this->atletaModel->listar();
+        $todosTestes = $this->testeModel->listar();
+        
         $dados = [
-            'total_atletas' => count($this->atletaModel->listar()),
-            'atletas_ativos' => count(array_filter($this->atletaModel->listar(), fn($a) => $a['status'] === 'ativo')),
-            'total_testes' => count($this->testeModel->listar()),
-            'testes_pendentes' => count(array_filter($this->testeModel->listar(), fn($t) => $t['resultado'] === 'pendente')),
-            'testes_positivos' => count(array_filter($this->testeModel->listar(), fn($t) => $t['resultado'] === 'positivo')),
-            'testes_negativos' => count(array_filter($this->testeModel->listar(), fn($t) => $t['resultado'] === 'negativo')),
+            'total_atletas' => count($todosAtletas),
+            'atletas_ativos' => count(array_filter($todosAtletas, fn($a) => $a['status'] === 'ativo')),
+            'total_testes' => count($todosTestes),
+            'testes_pendentes' => count(array_filter($todosTestes, fn($t) => $t['resultado'] === 'pendente')),
+            'testes_positivos' => count(array_filter($todosTestes, fn($t) => $t['resultado'] === 'positivo')),
+            'testes_negativos' => count(array_filter($todosTestes, fn($t) => $t['resultado'] === 'negativo')),
         ];
 
         // Filtrar testes se necessário

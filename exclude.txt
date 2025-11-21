@@ -1,0 +1,5 @@
+.git
+*.md
+*.bat
+exclude.txt
+
